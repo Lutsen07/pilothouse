@@ -18,7 +18,7 @@
     priceUsd: 89,
     currency: 'USD',
     tagline: 'A 20-minute Monday so the same problem cannot hide twice.',
-    targetCustomer: '1 to 10 person ecommerce and light wholesale shops',
+    targetCustomer: 'owner-run shops of 1 to 10 people',
     promise: 'A Monday scorecard, an exception log, and 12 written ways of working. Installed in 14 days. No consultant. No warehouse software.',
     bullets: [
       'Monday scorecard you can run in 20 minutes',
