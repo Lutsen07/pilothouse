@@ -39,6 +39,9 @@
       '',
       'Start with Start Here.docx. Monday scorecard is 20 minutes.',
       '',
+      'Questions or something that should be better: hello@pilothouseco.com',
+      'When we improve the kit, every buyer gets the new files. We do not send sales mail.',
+      '',
       '— ' + (offer.businessName || 'Pilothouse')
     ].join('\n');
     return { to: to, subject: subject, body: body, sku: offer.sku };
