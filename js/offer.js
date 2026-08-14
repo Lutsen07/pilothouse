@@ -26,7 +26,8 @@
       '12 Word guides from receiving through Friday close',
       'Excel workbooks for scores, exceptions, and vendor chase',
       'A calendar file you add on iPhone or Outlook',
-      'Short prompts if you want help writing more SOPs'
+      'Short prompts if you want help writing more SOPs',
+      'Bonus Bad Day Desk: customer replies, a cover sheet, a claim list, and a reorder planner'
     ],
     ctaLabel: 'Get the kit for $89',
     deliverablePath: 'product/ops-cadence-kit.zip',
