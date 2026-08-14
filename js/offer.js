@@ -1,5 +1,5 @@
 /**
- * Cadence Ops — single source of truth for offer, price, and copy.
+ * Pilothouse — single source of truth for offer, price, and copy.
  * Browser + Node (UMD). Landing and tests both consume this file.
  */
 (function (root, factory) {
