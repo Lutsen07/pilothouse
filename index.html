@@ -4,65 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Pilothouse — The Ops Cadence Kit</title>
-  <style>
-    :root {
-      --ink: #142028;
-      --muted: #4d5d68;
-      --line: #d5dde2;
-      --paper: #f6f3ec;
-      --card: #fffdf8;
-      --accent: #c45c26;
-      --accent-ink: #fff;
-      --ok: #1f6b4a;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: "Iowan Old Style", Palatino, Georgia, serif;
-      background: var(--paper);
-      color: var(--ink);
-      line-height: 1.55;
-    }
-    .wrap { max-width: 760px; margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
-    header {
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 1.2rem;
-      margin-bottom: 1.6rem;
-    }
-    .brand { font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
-    h1 { font-size: 2.1rem; line-height: 1.15; margin: 0.35rem 0 0.5rem; }
-    .tag { font-size: 1.15rem; color: var(--muted); margin: 0; }
-    .price-row { display: flex; align-items: baseline; gap: 1rem; margin: 1.2rem 0; }
-    #price { font-size: 2rem; font-weight: 700; }
-    .who { font-size: 0.95rem; color: var(--muted); }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      padding: 1.1rem 1.2rem;
-      margin: 1rem 0;
-    }
-    #promise { margin: 0 0 0.8rem; }
-    #bullets { margin: 0; padding-left: 1.2rem; }
-    #bullets li { margin: 0.35rem 0; }
-    .cta {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--accent-ink);
-      text-decoration: none;
-      font-family: system-ui, sans-serif;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      padding: 0.85rem 1.3rem;
-      border-radius: 4px;
-      border: 0;
-      cursor: pointer;
-      font-size: 1.05rem;
-    }
-    .cta:hover { filter: brightness(1.05); }
-    .fine { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; }
-    footer { margin-top: 2.5rem; font-size: 0.85rem; color: var(--muted); }
-    #checkout-mode { font-family: system-ui, sans-serif; font-size: 0.8rem; color: var(--ok); }
-  </style>
+  <meta name="description" content="A Monday scorecard, an exception log, and 12 written ways of working for small shops. $89. Instant download." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;650&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23b44a1c'/><circle cx='16' cy='16' r='5' fill='%23f3efe6'/></svg>" />
   <script src="js/offer.js"></script>
   <script src="js/checkout.js"></script>
   <script>
@@ -71,25 +18,95 @@
   </script>
 </head>
 <body>
+  <nav class="nav">
+    <a class="brand" id="brand" href="index.html">Pilothouse</a>
+    <span class="nav-note">Digital kit for small shops</span>
+  </nav>
+
   <div class="wrap">
-    <header>
-      <div class="brand" id="brand">Pilothouse</div>
-      <h1 id="product">The Ops Cadence Kit</h1>
-      <p class="tag" id="tagline"></p>
-    </header>
-    <p id="promise"></p>
-    <div class="price-row">
-      <div id="price"></div>
-      <div class="who" id="who"></div>
-    </div>
-    <div class="card">
-      <ul id="bullets"></ul>
-    </div>
-    <a class="cta" id="buy" href="checkout.html">Get the kit — $89</a>
-    <p class="fine" id="checkout-mode"></p>
-    <p class="fine">Instant download. 14-day install calendar included. No login required.</p>
-    <footer>Pilothouse · Digital products · No inventory · Built for operators, not a sales team.</footer>
+    <section class="hero">
+      <div>
+        <p class="kicker">From Pilothouse</p>
+        <h1 id="product">The Ops Cadence Kit</h1>
+        <p class="tag" id="tagline"></p>
+        <p id="promise"></p>
+        <div class="price-row">
+          <div id="price"></div>
+          <div class="who" id="who"></div>
+        </div>
+        <div class="cta-row">
+          <a class="cta" id="buy" href="checkout.html">Get the kit for $89</a>
+        </div>
+        <p class="fine" id="checkout-mode"></p>
+        <p class="fine">Instant download. Word, Excel, and a calendar you can add on your phone. No login.</p>
+      </div>
+      <figure class="hero-art">
+        <img src="assets/hero.jpg" width="1280" height="720" alt="A quiet packing bench with a carton, coffee, and a clipboard" />
+      </figure>
+    </section>
+
+    <section class="section">
+      <h2>What you get</h2>
+      <div class="grid" id="contents">
+        <article class="card">
+          <h3>Monday scorecard</h3>
+          <p>Twenty minutes. Five numbers. One problem for the week.</p>
+        </article>
+        <article class="card">
+          <h3>Exception log</h3>
+          <p>A simple list of fires that stole more than 15 minutes.</p>
+        </article>
+        <article class="card">
+          <h3>12 written SOPs</h3>
+          <p>Receiving through Friday close. Word files that open in Pages.</p>
+        </article>
+        <article class="card">
+          <h3>Three workbooks</h3>
+          <p>Scorecard, exceptions, and vendor chase in Excel or Numbers.</p>
+        </article>
+        <article class="card">
+          <h3>14 day calendar</h3>
+          <p>A file you add on iPhone or Outlook so the install actually happens.</p>
+        </article>
+        <article class="card">
+          <h3>Helper prompts</h3>
+          <p>Optional. Use them if you want a first draft of a new SOP.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Two weeks, then it runs itself</h2>
+      <div class="steps">
+        <article class="card">
+          <p class="step-num">01</p>
+          <h3>See the work</h3>
+          <p>Stand up the scorecard and the exception log. Circle the leak that shows up most.</p>
+        </article>
+        <article class="card">
+          <p class="step-num">02</p>
+          <h3>Write three ways</h3>
+          <p>Receiving, returns, and vendor chase. One owner. One done line.</p>
+        </article>
+        <article class="card">
+          <p class="step-num">03</p>
+          <h3>Keep Monday</h3>
+          <p>Twenty minutes before noon. Numbers first. One problem. Then back to the floor.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="band">
+      <div>
+        <h2>Who it is for</h2>
+        <p id="who-long">Owner operators at shops of one to ten people. Shopify, Amazon, eBay, or a mix. Process lives in Slack and in people&rsquo;s heads. You do not want a warehouse system. You want Monday to mean something.</p>
+      </div>
+      <img src="assets/monday.jpg" width="1280" height="720" alt="Two coffee mugs and a scorecard on a wooden table" />
+    </section>
   </div>
+
+  <footer class="site-footer">Pilothouse. Digital products for operators. No inventory. No sales team.</footer>
+
   <script>
     (function () {
       var offer = window.CadenceOffer.getOffer();
@@ -99,21 +116,15 @@
       document.getElementById('promise').textContent = offer.promise;
       document.getElementById('price').textContent = window.CadenceOffer.formatPrice(offer);
       document.getElementById('who').textContent = 'For ' + offer.targetCustomer;
-      var ul = document.getElementById('bullets');
-      offer.bullets.forEach(function (b) {
-        var li = document.createElement('li');
-        li.textContent = b;
-        ul.appendChild(li);
-      });
       var href = window.CadenceCheckout.buildCheckoutUrl({ offer: offer });
       var buy = document.getElementById('buy');
       buy.href = href;
       buy.textContent = window.CadenceOffer.ctaText(offer);
       var mode = document.getElementById('checkout-mode');
       if (window.CadenceCheckout.isHostedCheckout(href)) {
-        mode.textContent = 'Secure checkout via Stripe.';
+        mode.textContent = 'Secure checkout with Stripe.';
       } else {
-        mode.textContent = 'Test-mode checkout (Stripe Payment Link not set). Completes to the thank-you + download.';
+        mode.textContent = 'Test checkout. Completes to the thank you page and download.';
       }
     })();
   </script>

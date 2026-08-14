@@ -17,18 +17,18 @@
     sku: 'cadence-kit-v1',
     priceUsd: 89,
     currency: 'USD',
-    tagline: 'A weekly ops rhythm for shops that are drowning in Slack.',
-    targetCustomer: '1–10 person ecommerce / light-wholesale operators',
-    promise: 'Install a Monday scorecard, exception log, and 12 SOPs in 14 days — without a consultant or a WMS.',
+    tagline: 'A calm weekly rhythm for shops that live in Slack.',
+    targetCustomer: '1 to 10 person ecommerce and light wholesale shops',
+    promise: 'A Monday scorecard, an exception log, and 12 written ways of working. Installed in 14 days. No consultant. No warehouse software.',
     bullets: [
-      'Monday Ops Scorecard (20 minutes, scored 0–10)',
+      'Monday scorecard you can run in 20 minutes',
       'Exception log so the same fire cannot hide twice',
-      '12 copy-paste SOPs: receive through Friday close',
-      'CSV templates for Sheets or Excel',
-      'AI prompt pack to turn messy notes into SOPs',
-      '14-day install calendar so it actually gets used'
+      '12 Word guides from receiving through Friday close',
+      'Excel workbooks for scores, exceptions, and vendor chase',
+      'A calendar file you add on iPhone or Outlook',
+      'Short prompts if you want help writing more SOPs'
     ],
-    ctaLabel: 'Get the kit — $89',
+    ctaLabel: 'Get the kit for $89',
     deliverablePath: 'product/ops-cadence-kit.zip',
     successPath: 'thanks.html'
   };
@@ -57,7 +57,7 @@
 
   function ctaText(offer) {
     var o = offer || getOffer();
-    return 'Get the kit — ' + formatPrice(o);
+    return o.ctaLabel || ('Get the kit for ' + formatPrice(o));
   }
 
   return {

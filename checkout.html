@@ -3,31 +3,37 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Checkout — Pilothouse (test mode)</title>
-  <style>
-    body { font-family: system-ui, sans-serif; background: #f6f3ec; color: #142028; margin: 0; }
-    .box { max-width: 480px; margin: 3rem auto; background: #fffdf8; border: 1px solid #d5dde2; padding: 1.5rem; }
-    h1 { font-size: 1.3rem; }
-    .amt { font-size: 1.8rem; font-weight: 700; }
-    button, .go {
-      background: #c45c26; color: #fff; border: 0; padding: 0.8rem 1.1rem;
-      font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
-    }
-    .note { font-size: 0.85rem; color: #4d5d68; }
-  </style>
+  <title>Checkout — Pilothouse</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Source+Sans+3:wght@400;600;650&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='14' fill='%23b44a1c'/><circle cx='16' cy='16' r='5' fill='%23f3efe6'/></svg>" />
   <script src="js/offer.js"></script>
   <script src="js/checkout.js"></script>
   <script src="js/fulfill.js"></script>
 </head>
 <body>
-  <div class="box">
-    <p class="note" id="mode-label">Stripe test-mode checkout</p>
-    <h1 id="title">The Ops Cadence Kit</h1>
-    <p class="amt" id="amt">$89</p>
-    <p>Pay with card on Stripe once a Payment Link is configured. Until then, this test checkout records a local grant and sends you to the download.</p>
-    <button type="button" id="pay">Pay (test mode) — grant access</button>
-    <p class="note">Replace this page with a live Stripe Payment Link via <code>CADENCE_STRIPE_PAYMENT_LINK</code>. See OPERATOR.md.</p>
+  <nav class="nav">
+    <a class="brand" href="index.html">Pilothouse</a>
+    <span class="nav-note" id="mode-label">Checkout</span>
+  </nav>
+
+  <div class="wrap">
+    <div class="pay-box">
+      <p class="kicker">The Ops Cadence Kit</p>
+      <h1 id="title">The Ops Cadence Kit</h1>
+      <p class="amt" id="amt">$89</p>
+      <p>One time. Instant download. Word, Excel, and a calendar file.</p>
+      <p style="margin: 1.2rem 0 0;">
+        <button type="button" class="cta" id="pay">Pay and get the kit</button>
+      </p>
+      <p class="fine">On the live site this button goes to Stripe. This page is only the local stand-in.</p>
+    </div>
   </div>
+
+  <footer class="site-footer"><a href="index.html">Back to the kit</a></footer>
+
   <script>
     (function () {
       var offer = window.CadenceOffer.getOffer();
@@ -35,7 +41,7 @@
       document.getElementById('title').textContent = offer.productName;
       document.getElementById('amt').textContent = window.CadenceOffer.formatPrice(offer);
       if (q.mode === 'test') {
-        document.getElementById('mode-label').textContent = 'Stripe test-mode checkout (local stand-in)';
+        document.getElementById('mode-label').textContent = 'Test checkout';
       }
       document.getElementById('pay').addEventListener('click', function () {
         var grant = window.CadenceFulfill.accessPayload({ offer: offer, channel: 'test-checkout' });
