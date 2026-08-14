@@ -248,8 +248,37 @@ h1 {
 .prose p { color: var(--ink); }
 .prose .lede { color: var(--muted); }
 
+.more-methods {
+  margin: 2.4rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--line);
+}
+.more-methods h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 560;
+  margin: 0 0 0.55rem;
+}
+.more-methods ul { list-style: none; padding: 0; margin: 0; }
+.more-methods li { padding: 0.28rem 0; color: var(--muted); }
+.more-methods a { font-weight: 650; }
+
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.method-card img {
+  width: 100%;
+  border-radius: 14px;
+  margin: 0 0 0.85rem;
+}
+.method-card h3 { margin-bottom: 0.35rem; }
+.method-card h3 a { color: var(--ink); text-decoration: none; }
+.method-card h3 a:hover { color: var(--accent); }
+
 @media (max-width: 800px) {
-  .hero, .grid, .steps, .band { grid-template-columns: 1fr; }
+  .hero, .grid, .steps, .band, .method-grid { grid-template-columns: 1fr; }
   .hero { gap: 1.5rem; padding-top: 0.4rem; }
   .nav { padding-bottom: 0.4rem; }
 }
