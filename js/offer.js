@@ -13,11 +13,11 @@
 
   var OFFER = {
     businessName: 'Pilothouse',
-    productName: 'The Ops Cadence Kit',
+    productName: 'The Weekly Shop Kit',
     sku: 'cadence-kit-v1',
     priceUsd: 89,
     currency: 'USD',
-    tagline: 'A calm weekly rhythm for shops that live in Slack.',
+    tagline: 'A 20-minute Monday so the same problem cannot hide twice.',
     targetCustomer: '1 to 10 person ecommerce and light wholesale shops',
     promise: 'A Monday scorecard, an exception log, and 12 written ways of working. Installed in 14 days. No consultant. No warehouse software.',
     bullets: [
