@@ -37,7 +37,7 @@
       'Download (same files as the thank-you page):',
       access.downloadPath,
       '',
-      'Start with 14-DAY-INSTALL.md. Monday scorecard is 20 minutes.',
+      'Start with Start Here.docx. Monday scorecard is 20 minutes.',
       '',
       '— ' + (offer.businessName || 'Pilothouse')
     ].join('\n');
