@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>You’re in — Pilothouse</title>
+  <style>
+    body { font-family: "Iowan Old Style", Palatino, Georgia, serif; background: #f6f3ec; color: #142028; margin: 0; }
+    .wrap { max-width: 640px; margin: 2.5rem auto; padding: 0 1.2rem; }
+    a.dl {
+      display: inline-block; background: #1f6b4a; color: #fff; text-decoration: none;
+      padding: 0.85rem 1.2rem; font-family: system-ui, sans-serif; font-weight: 700;
+    }
+    .preview { font-size: 0.9rem; color: #4d5d68; }
+  </style>
+  <script src="js/offer.js"></script>
+  <script src="js/fulfill.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Payment received. Here’s the kit.</h1>
+    <p id="line"></p>
+    <p><a class="dl" id="download" href="product/ops-cadence-kit.zip">Download The Ops Cadence Kit (.zip)</a></p>
+    <p class="preview">Unzip and open <strong>14-DAY-INSTALL.md</strong> first. Monday is 20 minutes.</p>
+    <pre class="preview" id="email-preview"></pre>
+    <p><a href="index.html">Back to Pilothouse</a></p>
+  </div>
+  <script>
+    (function () {
+      var offer = window.CadenceOffer.getOffer();
+      var access = window.CadenceFulfill.accessPayload({ offer: offer });
+      document.getElementById('line').textContent =
+        access.productName + ' is unlocked. SKU ' + access.sku + '.';
+      document.getElementById('download').href = access.downloadPath;
+      document.getElementById('download').textContent = 'Download ' + offer.productName + ' (.zip)';
+      var mail = window.CadenceFulfill.fulfillmentEmail({ offer: offer, to: 'you@yourstore.com' });
+      document.getElementById('email-preview').textContent =
+        'Fulfillment email that automation will send:\n\nSubject: ' + mail.subject + '\n\n' + mail.body;
+    })();
+  </script>
+</body>
+</html>

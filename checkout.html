@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — Pilothouse (test mode)</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f6f3ec; color: #142028; margin: 0; }
+    .box { max-width: 480px; margin: 3rem auto; background: #fffdf8; border: 1px solid #d5dde2; padding: 1.5rem; }
+    h1 { font-size: 1.3rem; }
+    .amt { font-size: 1.8rem; font-weight: 700; }
+    button, .go {
+      background: #c45c26; color: #fff; border: 0; padding: 0.8rem 1.1rem;
+      font-weight: 700; cursor: pointer; text-decoration: none; display: inline-block;
+    }
+    .note { font-size: 0.85rem; color: #4d5d68; }
+  </style>
+  <script src="js/offer.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/fulfill.js"></script>
+</head>
+<body>
+  <div class="box">
+    <p class="note" id="mode-label">Stripe test-mode checkout</p>
+    <h1 id="title">The Ops Cadence Kit</h1>
+    <p class="amt" id="amt">$89</p>
+    <p>Pay with card on Stripe once a Payment Link is configured. Until then, this test checkout records a local grant and sends you to the download.</p>
+    <button type="button" id="pay">Pay (test mode) — grant access</button>
+    <p class="note">Replace this page with a live Stripe Payment Link via <code>CADENCE_STRIPE_PAYMENT_LINK</code>. See OPERATOR.md.</p>
+  </div>
+  <script>
+    (function () {
+      var offer = window.CadenceOffer.getOffer();
+      var q = window.CadenceCheckout.parseCheckoutQuery(location.search);
+      document.getElementById('title').textContent = offer.productName;
+      document.getElementById('amt').textContent = window.CadenceOffer.formatPrice(offer);
+      if (q.mode === 'test') {
+        document.getElementById('mode-label').textContent = 'Stripe test-mode checkout (local stand-in)';
+      }
+      document.getElementById('pay').addEventListener('click', function () {
+        var grant = window.CadenceFulfill.accessPayload({ offer: offer, channel: 'test-checkout' });
+        try { sessionStorage.setItem('cadence_grant', JSON.stringify(grant)); } catch (e) {}
+        var next = q.success || offer.successPath || 'thanks.html';
+        location.href = next + (next.indexOf('?') >= 0 ? '&' : '?') + 'paid=1&sku=' + encodeURIComponent(offer.sku);
+      });
+    })();
+  </script>
+</body>
+</html>

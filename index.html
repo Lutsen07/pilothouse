@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pilothouse — The Ops Cadence Kit</title>
+  <style>
+    :root {
+      --ink: #142028;
+      --muted: #4d5d68;
+      --line: #d5dde2;
+      --paper: #f6f3ec;
+      --card: #fffdf8;
+      --accent: #c45c26;
+      --accent-ink: #fff;
+      --ok: #1f6b4a;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", Palatino, Georgia, serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 2.2rem 1.2rem 4rem; }
+    header {
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 1.2rem;
+      margin-bottom: 1.6rem;
+    }
+    .brand { font-size: 0.82rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+    h1 { font-size: 2.1rem; line-height: 1.15; margin: 0.35rem 0 0.5rem; }
+    .tag { font-size: 1.15rem; color: var(--muted); margin: 0; }
+    .price-row { display: flex; align-items: baseline; gap: 1rem; margin: 1.2rem 0; }
+    #price { font-size: 2rem; font-weight: 700; }
+    .who { font-size: 0.95rem; color: var(--muted); }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 1.1rem 1.2rem;
+      margin: 1rem 0;
+    }
+    #promise { margin: 0 0 0.8rem; }
+    #bullets { margin: 0; padding-left: 1.2rem; }
+    #bullets li { margin: 0.35rem 0; }
+    .cta {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--accent-ink);
+      text-decoration: none;
+      font-family: system-ui, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 0.85rem 1.3rem;
+      border-radius: 4px;
+      border: 0;
+      cursor: pointer;
+      font-size: 1.05rem;
+    }
+    .cta:hover { filter: brightness(1.05); }
+    .fine { font-size: 0.85rem; color: var(--muted); margin-top: 0.6rem; }
+    footer { margin-top: 2.5rem; font-size: 0.85rem; color: var(--muted); }
+    #checkout-mode { font-family: system-ui, sans-serif; font-size: 0.8rem; color: var(--ok); }
+  </style>
+  <script src="js/offer.js"></script>
+  <script src="js/checkout.js"></script>
+  <script>
+    /* Go-live: paste Stripe Payment Link (test or live). Empty = local test checkout. */
+    window.CADENCE_STRIPE_PAYMENT_LINK = window.CADENCE_STRIPE_PAYMENT_LINK || '';
+  </script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand" id="brand">Pilothouse</div>
+      <h1 id="product">The Ops Cadence Kit</h1>
+      <p class="tag" id="tagline"></p>
+    </header>
+    <p id="promise"></p>
+    <div class="price-row">
+      <div id="price"></div>
+      <div class="who" id="who"></div>
+    </div>
+    <div class="card">
+      <ul id="bullets"></ul>
+    </div>
+    <a class="cta" id="buy" href="checkout.html">Get the kit — $89</a>
+    <p class="fine" id="checkout-mode"></p>
+    <p class="fine">Instant download. 14-day install calendar included. No login required.</p>
+    <footer>Pilothouse · Digital products · No inventory · Built for operators, not a sales team.</footer>
+  </div>
+  <script>
+    (function () {
+      var offer = window.CadenceOffer.getOffer();
+      document.getElementById('brand').textContent = offer.businessName;
+      document.getElementById('product').textContent = offer.productName;
+      document.getElementById('tagline').textContent = offer.tagline;
+      document.getElementById('promise').textContent = offer.promise;
+      document.getElementById('price').textContent = window.CadenceOffer.formatPrice(offer);
+      document.getElementById('who').textContent = 'For ' + offer.targetCustomer;
+      var ul = document.getElementById('bullets');
+      offer.bullets.forEach(function (b) {
+        var li = document.createElement('li');
+        li.textContent = b;
+        ul.appendChild(li);
+      });
+      var href = window.CadenceCheckout.buildCheckoutUrl({ offer: offer });
+      var buy = document.getElementById('buy');
+      buy.href = href;
+      buy.textContent = window.CadenceOffer.ctaText(offer);
+      var mode = document.getElementById('checkout-mode');
+      if (window.CadenceCheckout.isHostedCheckout(href)) {
+        mode.textContent = 'Secure checkout via Stripe.';
+      } else {
+        mode.textContent = 'Test-mode checkout (Stripe Payment Link not set). Completes to the thank-you + download.';
+      }
+    })();
+  </script>
+</body>
+</html>
