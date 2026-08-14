@@ -18,8 +18,8 @@
     priceUsd: 89,
     currency: 'USD',
     tagline: 'A 20-minute Monday so the same problem cannot hide twice.',
-    targetCustomer: 'owner-run shops of 1 to 10 people',
-    promise: 'A Monday scorecard, an exception log, and 12 written ways of working. Installed in 14 days. No consultant. No warehouse software.',
+    targetCustomer: 'owner-run shops of 1 to 10 people, including new starts',
+    promise: 'A Monday scorecard, an exception log, and 12 written ways of working. Installed in 14 days. For shops already shipping and for people writing how the shop will run before the first order. No consultant. No warehouse software.',
     bullets: [
       'Monday scorecard you can run in 20 minutes',
       'Exception log so the same fire cannot hide twice',
